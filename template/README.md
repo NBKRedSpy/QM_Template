@@ -1,11 +1,10 @@
-# Quasimorph XXXX
+# Quasimorph QM_Template
 
 ![thumbnail icon](media/thumbnail.png)
 
-
 # Configuration
 
-The configuration file will be created on the first game run and can be found at `%AppData%\..\LocalLow\Magnum Scriptum Ltd\Quasimorph\XXXX\config.json`.
+The configuration file will be created on the first game run and can be found at `%AppData%\..\LocalLow\Magnum Scriptum Ltd\Quasimorph\QM_Template\config.json`.
 
 |Name|Default|Description|
 |--|--|--|
@@ -21,4 +20,4 @@ If you enjoy my mods and want to buy me a coffee, check out my [Ko-Fi](https://k
 Thanks!
 
 # Source Code
-Source code is available on GitHub at https://github.com/NBKRedSpy/XXXX
+Source code is available on GitHub at https://github.com/$username$/QM_Template

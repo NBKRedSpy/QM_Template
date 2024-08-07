@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageType>Template</PackageType>
+    <PackageVersion>1.0</PackageVersion>
+    <PackageId>NBK_RedSpy.QM_Template.Template</PackageId>
+    <Title>Quasimorph Template</Title>
+    <Authors>NBK_RedSpy</Authors>
+    <Description>A template to create a Quasimorph Mod</Description>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWarn>$(NoWarn),NU5128</NoWarn>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageOutputPath>./.nupkg</PackageOutputPath>    
+
+    <PackageTags>QM_Template;Quasimorph;</PackageTags>
+    <PackageCopyright>NBK_RedSpy 2024</PackageCopyright>
+    <!-- <PackageIcon>icon.png</PackageIcon> -->
+    <PackageProjectUrl>https://github.com/NBKRedSpy/QM_Template</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="template\**\*" Exclude="template\src\.vs\**;template\src\**\bin\**;template\src\**\obj\**" />
+    <Compile Remove="**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- <None Include="icon.png" Pack="true" PackagePath="" /> -->
+  </ItemGroup>
+
+</Project>

@@ -1,7 +1,0 @@
-{
-  "UniqueModName": "modUser_$safeprojectname$",
-  "Assemblies": [
-    "$safeprojectname$.dll"
-  ],
-  "Dependencies": []
-}

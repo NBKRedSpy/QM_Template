@@ -20,6 +20,11 @@
 		<WorkshopPath>$(GAME_PATH)\..\..\workshop\content\2059170\$(SteamId)\</WorkshopPath>
 		<ManagedPath>$(GAME_PATH)\$(GAME_NAME)_Data\Managed\</ManagedPath>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="Move To Root\**" />
+	  <EmbeddedResource Remove="Move To Root\**" />
+	  <None Remove="Move To Root\**" />
+	</ItemGroup>
 
 
 	<ItemGroup>
@@ -81,9 +86,5 @@
 	  <Reference Update="System">
 	    <Private>False</Private>
 	  </Reference>
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Move To Root\media\" />
-	  <Folder Include="Move To Root\src\" />
 	</ItemGroup>
 </Project>

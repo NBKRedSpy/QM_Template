@@ -1,0 +1,7 @@
+{
+  "UniqueModName": "$UserName$_QM_Template",
+  "Assemblies": [
+    "QM_Template.dll"
+  ],
+  "Dependencies": []
+}
