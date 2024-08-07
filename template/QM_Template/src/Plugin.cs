@@ -26,7 +26,7 @@ namespace QM_Template
 
             Config = ModConfig.LoadConfig(ConfigPath);
 
-            new Harmony("_" + ModAssemblyName).PatchAll();
+            new Harmony("$UserName$_" + ModAssemblyName).PatchAll();
         }
 
      

@@ -10,7 +10,20 @@
       "language": "C#",
       "type": "project"
     },
-    "exclude" : [ "**/[Bb]in/**", "**/[Oo]bj/**", ".template.config/**/*", "**/*.filelist", "**/*.user", "**/*.lock.json", "**/.vs/**"],
+    "sources": [
+      {"modifiers": [
+        {"exclude": [
+          "**/[Bb]in/**",
+          "**/[Oo]bj/**",
+          ".template.config/**/*",
+          "**/*.filelist",
+          "**/*.user",
+          "**/*.lock.json",
+          "**/.vs/**"
+        ]
+      }
+      ]}
+    ],
     "symbols": {
         "UserName": {
             "type":"parameter",
