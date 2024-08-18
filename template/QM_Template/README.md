@@ -20,4 +20,4 @@ If you enjoy my mods and want to buy me a coffee, check out my [Ko-Fi](https://k
 Thanks!
 
 # Source Code
-Source code is available on GitHub at https://github.com/$username$/QM_Template
+Source code is available on GitHub at https://github.com/$UserName$/QM_Template

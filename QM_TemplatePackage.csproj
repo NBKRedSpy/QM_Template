@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>1.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <PackageId>NBK_RedSpy.QM_Template.Template</PackageId>
     <Title>Quasimorph Template</Title>
     <Authors>NBK_RedSpy</Authors>
