@@ -42,13 +42,13 @@ A parameter screen will ask for the UserName, which is the name that will be use
 ## dotnet Command line
 Open a console window to the desired root directory (Ex: c:/src)
 
-type `dotnet new QM_Template -n <some project name> --UserName <some user name>` where `<some project name>` is the name of the project, and `<some user name>` is the username to use as a username identifier.
+type `dotnet new QM_Template -o <some project name> --UserName <some user name>` where `<some project name>` is the name of the project, and `<some user name>` is the username to use as a username identifier.
 
-Example: `dotnet new QM_Template -n QM_AmazingMod --UserName NBKRedSpy`
+Example: `dotnet new QM_Template -o QM_AmazingMod --UserName NBKRedSpy`
 
 In the example above, there will now be a QM_AmazingMod folder in the current directory with the new project's files.  
 
-*Important*: If the -n parameter is not provided, the folder and project name will be "template"
+*Important*: If the -o parameter is not provided, the project will be created in the current directory, rather than a sub folder.
 
 # Uninstall
 At a command prompt, type 
