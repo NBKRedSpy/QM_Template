@@ -9,6 +9,11 @@ This creates a Quasimorph Mod project which already includes Harmony, Publicizer
 The template can either be installed via a NuGet package or by installing from the source code.
 Only one install method is needed.
 
+## Old Versions of the dotnet Utility
+
+**Important**: If the template install fails with the message `Couldn't find an installed template that matches the input, searching online for one that does...`, 
+the dotnet utility is most likely an old version.  The latest .NET SDK with the latest tools can be found here: https://dotnet.microsoft.com/en-us/download/dotnet
+
 ## Install Via NuGet Package
 
 This registers the dotnet template via the `NBK_RedSpy.QM_Template.Template.<version>.nupkg` in the releases folder.
