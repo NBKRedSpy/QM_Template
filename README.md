@@ -7,7 +7,7 @@ This creates a Quasimorph Mod project which already includes Harmony, Publicizer
 # Installation
 
 The template can either be installed via a NuGet package or by installing from the source code.
-Only one install method is needed.
+Only one install method is needed.  See the [Install Via NuGet Package](#install-via-nuget-package) and [Install Via Source Code](#install-via-source-code) sections below.
 
 ## Old Versions of the dotnet Utility
 
