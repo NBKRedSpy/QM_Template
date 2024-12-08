@@ -28,6 +28,8 @@ namespace QM_Template
             {
                 logPrefix = Assembly.GetExecutingAssembly().GetName().Name;
             }
+
+            LogPrefix = logPrefix;
         }
 
         public void Log(string message)
