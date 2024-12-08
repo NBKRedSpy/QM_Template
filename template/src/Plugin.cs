@@ -13,22 +13,23 @@ namespace QM_Template
 {
     public static class Plugin
     {
-        public static string ModAssemblyName => Assembly.GetExecutingAssembly().GetName().Name;
 
-        public static string ConfigPath => Path.Combine(Application.persistentDataPath, ModAssemblyName, "config.json");
-        public static string ModPersistenceFolder => Path.Combine(Application.persistentDataPath, ModAssemblyName);
+        public static ConfigDirectories ConfigDirectories = new ConfigDirectories();
+
         public static ModConfig Config { get; private set; }
+
+        public static Logger Logger = new Logger();
 
         [Hook(ModHookType.AfterConfigsLoaded)]
         public static void AfterConfig(IModContext context)
         {
-            Directory.CreateDirectory(ModPersistenceFolder);
 
-            Config = ModConfig.LoadConfig(ConfigPath);
+            Directory.CreateDirectory(ConfigDirectories.ModPersistenceFolder);
 
-            new Harmony("$UserName$_" + ModAssemblyName).PatchAll();
+            Config = ModConfig.LoadConfig(ConfigDirectories.ConfigPath);
+
+            new Harmony("$UserName$_" + ConfigDirectories.ModAssemblyName).PatchAll();
         }
-
      
     }
 }

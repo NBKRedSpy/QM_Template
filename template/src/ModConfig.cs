@@ -35,7 +35,7 @@ namespace QM_Template
 
                     if (upgradeConfig != sourceJson)
                     {
-                        Debug.Log("Updating config with missing elements");
+                        Plugin.Logger.Log("Updating config with missing elements");
                         //re-write
                         File.WriteAllText(configPath, upgradeConfig);
                     }
@@ -45,8 +45,8 @@ namespace QM_Template
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogError("Error parsing configuration.  Ignoring config file and using defaults");
-                    Debug.LogException(ex);
+                    Plugin.Logger.LogError("Error parsing configuration.  Ignoring config file and using defaults");
+                    Plugin.Logger.LogException(ex);
 
                     //Not overwriting in case the user just made a typo.
                     config = new ModConfig();

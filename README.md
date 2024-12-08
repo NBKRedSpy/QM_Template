@@ -23,7 +23,7 @@ Open a command prompt in the directory that the nupkg was downloaded to.
 type `dotnet new install <downloaded file name>` and press enter.
 
 Example:
-`dotnet new install .\NBK_RedSpy.QM_Template.Template.1.0.0.nupkg`
+`dotnet new install .\NBK_RedSpy.QM_Template.Template.1.1.0.nupkg`
 
 ## Install Via Source Code
 Download the source code from this repository.
@@ -81,14 +81,20 @@ FooProject
 │   
 ├───media  -- folder to place the thumbnail.png
 │       .gitkeep
+│       
 └───src -- holds the project's files.
     │   .gitignore
-    │   ExamplePatch.cs     -- An example Harmony Patch
+    │   ExamplePatch.cs     	-- An example Harmony Patch.  Commented out
+    │   ConfigDirectories.cs	-- The file and configuration paths
     │   FooProject.csproj
     │   FooProject.sln
     │   LICENSE.md
-    │   ModConfig.cs        -- Optional Mod config file
-    │   Plugin.cs           -- Bootstrap 
+    │   Logger.cs				-- Unity.Debug logger that includes the mod's name
+    │   ModConfig.cs        	-- Optional Mod config file
+    │   Plugin.cs           	-- Bootstrap 
+    │       
+    └───Properties
+            AssemblyInfo.cs		-- Version Information
 ```
 
 To use the project:
