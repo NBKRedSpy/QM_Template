@@ -3,6 +3,15 @@
 A Quasimorph dotnet style template to create a new mod.
 This creates a Quasimorph Mod project which already includes Harmony, Publicizer, game references, and some basic scaffolding.
 
+# Quick Start
+
+Download the template from https://github.com/NBKRedSpy/QM_Template/releases/download/v1.1.0/NBK_RedSpy.QM_Template.Template.1.1.0.nupkg  
+Install the template via command prompt: `dotnet new install .\NBK_RedSpy.QM_Template.Template.1.1.0.nupkg`  
+Create a new project via command prompt: `dotnet new QM_Template -o SomeAmazingMod --UserName YourModderName`  
+
+See the [Folder Structure](#folder-structure) section for more information on the directory contents and usage.
+
+The remainder of this document contains information on install options and template usage.
 
 # Installation
 
