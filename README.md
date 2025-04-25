@@ -5,8 +5,10 @@ This creates a Quasimorph Mod project which already includes Harmony, Publicizer
 
 # Quick Start
 
-Download the template from https://github.com/NBKRedSpy/QM_Template/releases/download/v1.1.0/NBK_RedSpy.QM_Template.Template.1.1.0.nupkg  
-Install the template via command prompt: `dotnet new install .\NBK_RedSpy.QM_Template.Template.1.1.0.nupkg`  
+Download the nupkg file from https://github.com/NBKRedSpy/QM_Template/releases
+
+Install the template via command prompt: `dotnet new install <nupkg file name>`  
+Example: `dotnet new install .\NBK_RedSpy.QM_Template.Template.1.1.1.nupkg`  
 Create a new project via command prompt: `dotnet new QM_Template -o SomeAmazingMod --UserName YourModderName`  
 
 See the [Folder Structure](#folder-structure) section for more information on the directory contents and usage.
