@@ -15,7 +15,7 @@ The list of valid keyboard keys can be found  at the bottom of https://docs.unit
 Beware that numbers 0-9 are Alpha0 - Alpha9.  Most of the other keys are as expected such as X for X.
 Use "None" to not bind the key.
 
-# Support
+# Buy Me a Coffee
 If you enjoy my mods and want to buy me a coffee, check out my [Ko-Fi](https://ko-fi.com/nbkredspy71915) page.
 Thanks!
 
