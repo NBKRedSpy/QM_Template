@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>1.1.2</PackageVersion>
+    <PackageVersion>1.1.3</PackageVersion>
     <PackageId>NBK_RedSpy.QM_Template.Template</PackageId>
     <Title>Quasimorph Template</Title>
     <Authors>NBK_RedSpy</Authors>
@@ -19,7 +19,7 @@
     <PackageOutputPath>./.nupkg</PackageOutputPath>    
 
     <PackageTags>QM_Template;Quasimorph;</PackageTags>
-    <PackageCopyright>NBK_RedSpy 2024</PackageCopyright>
+    <PackageCopyright>NBK_RedSpy 2025</PackageCopyright>
     <!-- <PackageIcon>icon.png</PackageIcon> -->
     <PackageProjectUrl>https://github.com/NBKRedSpy/QM_Template</PackageProjectUrl>
   </PropertyGroup>
