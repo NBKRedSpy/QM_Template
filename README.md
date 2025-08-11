@@ -133,6 +133,7 @@ Update the mod on Steam:
 * Use the console command `mod_updateworkshopitem <Steam Workshop ID> <Workshop Folder> true`, pointing to the mod's Steam Workshop folder.  Example: `mod_updateworkshopitem 1234567 "C:\Program Files\steamapps\workshop\content\2059170\12345678" true`
 * Change the Mod's Steam Workshop page to public.
 
-
+# Change Log
+See the [Change Log](CHANGELOG.md) for details on changes to the template.
 
 

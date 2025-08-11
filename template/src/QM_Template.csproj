@@ -1,31 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
-    <OutputType>Library</OutputType>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-  </PropertyGroup>
 	<PropertyGroup>
-		<GAME_NAME>Quasimorph</GAME_NAME>
+		<TargetFramework>net48</TargetFramework>
+		<OutputType>Library</OutputType>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	</PropertyGroup>
+	<PropertyGroup>
+		<!-- Set this value to your mod's Steam Workhop ID -->
 		<SteamId></SteamId>
 	</PropertyGroup>
 	<PropertyGroup>
+		<GAME_NAME>Quasimorph</GAME_NAME>
 		<GAME_PATH Condition="!Exists('$(GAME_PATH)')">$([MSBuild]::GetRegistryValueFromView('HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App $(GAME_STEAM_ID)', 'InstallLocation', null, RegistryView.Registry64, RegistryView.Registry32))</GAME_PATH>
 		<_SteamLibraryPath>$([MSBuild]::GetRegistryValueFromView('HKEY_CURRENT_USER\SOFTWARE\Valve\Steam', 'SteamPath', null, RegistryView.Registry32))</_SteamLibraryPath>
 		<GAME_PATH Condition="!Exists('$(GAME_PATH)') AND '$(_SteamLibraryPath)' != ''">$(_SteamLibraryPath)\steamapps\common\$(GAME_NAME)</GAME_PATH>
 		<GAME_PATH Condition="!Exists('$(GAME_PATH)')">C:\Program Files\Steam\steamapps\common\$(GAME_NAME)</GAME_PATH>
 		<GAME_PATH Condition="!Exists('$(GAME_PATH)')">C:\Program Files (x86)\Steam\steamapps\common\$(GAME_NAME)</GAME_PATH>
-	</PropertyGroup>
-	<PropertyGroup>
 		<WorkshopPath>$(GAME_PATH)\..\..\workshop\content\2059170\$(SteamId)\</WorkshopPath>
 		<ManagedPath>$(GAME_PATH)\$(GAME_NAME)_Data\Managed\</ManagedPath>
+		<AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
+		<PackageFolder>$(ProjectDir)../package/</PackageFolder>
 	</PropertyGroup>
-	<ItemGroup>
-	  <Compile Remove="Move To Root\**" />
-	  <EmbeddedResource Remove="Move To Root\**" />
-	  <None Remove="Move To Root\**" />
-	</ItemGroup>
-
-
 	<ItemGroup>
 		<Reference Include="Assembly-CSharp" publicize="true">
 			<HintPath>$(ManagedPath)Assembly-CSharp.dll</HintPath>
@@ -48,50 +42,58 @@
 		</Reference>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2">
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
-		<PackageReference Include="Lib.harmony" Version="2.3.3" />
-		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-		<PackageReference Include="Newtonsoft.json" Version="13.0.3" />
-		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+		<PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" ExcludeAssets="runtime" />
+		<PackageReference Include="Lib.harmony" Version="2.3.3" ExcludeAssets="runtime" />
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" ExcludeAssets="runtime" />
+		<PackageReference Include="Newtonsoft.json" Version="13.0.3" ExcludeAssets="runtime" />
+		<PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" ExcludeAssets="runtime" />
 	</ItemGroup>
-	<PropertyGroup>
-	    <AssemblyVersion>$(VersionPrefix)</AssemblyVersion>
-		<PackageFolder>$(ProjectDir)../package/</PackageFolder>
 
-	</PropertyGroup>
-	<Target Name="CleanArtifacts" AfterTargets="PostBuildEvent">
+	<!--Clean out the Steam Workshop folder to prevent artifacts such as references no longer used-->
+	<Target BeforeTargets="PostBuildEvent" Condition="'$(SteamId)'!=''" Name="WorkshopFolderClean">
 		<ItemGroup>
-			<ArtifactFiles Include="$(TargetDir)AsmResolver.*" />
-			<ArtifactFiles Include="$(TargetDir)BepInEx.AssemblyPublicizer.*" />
+			<FilesToDelete Include="$(WorkshopPath)*" />
 		</ItemGroup>
-		<Message Text="Deleting Build Artifacts from BepInEx Publicizer"/>
-		<Delete Files="@(ArtifactFiles)" />
+		<Delete Files="@(FilesToDelete)" />
 	</Target>
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="@echo off&#xD;&#xA;set deployDir=&quot;$(WorkshopPath)&quot;&#xD;&#xA;&#xD;&#xA;xcopy /f /y &quot;../modmanifest.json&quot; &quot;$(TargetDir)&quot;&#xD;&#xA;&#xD;&#xA;if '$(SteamId)'=='' (echo SteamId in project not set.  Aborting Workshop Deployment &amp;&amp; exit)&#xD;&#xA;echo deploying to %25deployDir%25&#xD;&#xA;&#xD;&#xA;mkdir &quot;$(WorkshopPath)&quot;&#xD;&#xA;&#xD;&#xA;xcopy /f /y &quot;$(ProjectDir)../media/thumbnail.png&quot; %25deployDir%25&#xD;&#xA;xcopy /f /y &quot;$(ProjectDir)../modmanifest.json&quot; %25deployDir%25&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;xcopy /f /y   &quot;$(TargetDir)$(TargetName).*&quot; %25deployDir%25&#xD;&#xA;xcopy /f /y   &quot;$(TargetDir)0Harmony.dll&quot; %25deployDir%25&#xD;&#xA;&#xD;&#xA;xcopy /f /y &quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\System.Data.dll&quot; %25deployDir%25&#xD;&#xA;xcopy /f /y &quot;C:\Windows\Microsoft.NET\Framework64\v4.0.30319\System.Runtime.Serialization.dll&quot; %25deployDir%25&#xD;&#xA;xcopy /f /y  &quot;$(TargetDir)Newtonsoft.Json.dll&quot; %25deployDir%25&#xD;&#xA;" />
+
+	<Target Name="ModBaseItems" AfterTargets="PostBuildEvent">
+		<Copy SourceFiles="../modmanifest.json" DestinationFolder="$(TargetDir)" />
+		<Copy SourceFiles="../media/thumbnail.png" DestinationFolder="$(TargetDir)" ContinueOnError="true" />
+	</Target>
+
+	<Target Name="NoSteamIdMessage" Condition="'$(SteamId)'==''" AfterTargets="PostBuildEvent">
+		<Message Importance="high" Text="The SteamId is not set in the project.  Aborting Steam Workshop folder deployment." />
+	</Target>
+		
+	<Target Name="SteamWorkshopDeploy" Condition="'$(SteamId)'!=''" AfterTargets="PostBuildEvent">
+		<ItemGroup>
+			<BuildSource Include="$(TargetDir)/*.*" />
+		</ItemGroup>
+		<MakeDir Directories="$(WorkshopPath)" ContinueOnError="true" />
+		<Copy SourceFiles="@(BuildSource)" DestinationFolder="$(WorkshopPath)" />
+	</Target>
+
+	<Target Name="ReleasePbdDelete" Condition="'$(SteamId)'!='' and '$(Configuration)'=='Release'" AfterTargets="PostBuildEvent">
+		<Delete Files="$(WorkshopPath)/$(TargetName).pdb" />
+	</Target>
+
+
+	<!-- Create the .Zip file release-->
+	<Target Condition="'$(SteamId)'!=''" AfterTargets="PostBuildEvent" Name="PostBuildPackage">
 		<ItemGroup>
 			<WorkshopSourceFile Include="$(WorkshopPath)*.*" />
-			<PackageRemoveFiles Include="$(PackageFolder)$(TargetName)/*.pdb" />
-		</ItemGroup>
-	</Target>
-	<Target Condition="'$(SteamId)'!=''" Name="PostBuildPackage" AfterTargets="PostBuildEvent">
-		<ItemGroup>
-			<WorkshopSourceFile Include="$(WorkshopPath)*.*" />
-			<PackageRemoveFiles Include="$(PackageFolder)$(TargetName)/*.pdb" />
 		</ItemGroup>
 
-		<Message Text="---------- Creating Package: $(PackageFolder)$(TargetName)/*.pdb" Importance="high" />
 		<RemoveDir Directories="$(PackageFolder)" />
+		<MakeDir Directories="$(PackageFolder)" />
 		<Copy SourceFiles="@(WorkshopSourceFile)" DestinationFolder="$(PackageFolder)$(TargetName)"></Copy>
-		<Delete Files="@(PackageRemoveFiles)" />
+		<Delete Files="$(PackageFolder)$(TargetName)/$(TargetName).pdb" />
 		<ZipDirectory SourceDirectory="$(PackageFolder)" DestinationFile="$(PackageFolder)../$(TargetName).zip" Overwrite="true" />
 	</Target>
 	<ItemGroup>
-	  <Reference Update="System">
-	    <Private>False</Private>
-	  </Reference>
+		<Reference Update="System">
+			<Private>False</Private>
+		</Reference>
 	</ItemGroup>
 </Project>
