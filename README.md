@@ -133,6 +133,13 @@ Update the mod on Steam:
 * Use the console command `mod_updateworkshopitem <Steam Workshop ID> <Workshop Folder> true`, pointing to the mod's Steam Workshop folder.  Example: `mod_updateworkshopitem 1234567 "C:\Program Files\steamapps\workshop\content\2059170\12345678" true`
 * Change the Mod's Steam Workshop page to public.
 
+# Debugging Build Output
+To see the full of the build tasks info, run the following in a command prompt in the project's src folder:
+
+`dotnet build -v n -tl:off`
+
+This will provide info for every task rather than the build summary.
+
 # Change Log
 See the [Change Log](CHANGELOG.md) for details on changes to the template.
 
