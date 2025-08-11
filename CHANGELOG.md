@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 1.0.5
+## 1.1.5
 
 ### Removed
 - Removed copying build artifacts that are no longer needed.  Specifically the System*.dlls, Newtonsoft.json.dll and 0Harmony.dll
