@@ -3,5 +3,7 @@
   "Assemblies": [
     "QM_Template.dll"
   ],
-  "Dependencies": []
+  "Dependencies": [],
+  "SteamTags": [
+  ]
 }
