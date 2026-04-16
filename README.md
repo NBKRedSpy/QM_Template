@@ -11,11 +11,10 @@ Install the template via command prompt: `dotnet new install <nupkg file name>`
 Example: `dotnet new install .\NBK_RedSpy.QM_Template.Template.1.1.1.nupkg`  
 Create a new project via command prompt: `dotnet new QM_Template -o SomeAmazingMod --UserName YourModderName`  
 
-See the [Folder Structure](#folder-structure) section for more information on the directory contents and usage.
-
-The remainder of this document contains information on install options and template usage.
+See the [Template Usage](#template-usage) and [Folder Structure](#folder-structure) sections for more information on the directory contents and usage.
 
 # Installation
+If the template has already been installed via the Quick Start section above, skip to the [Template Usage](#template-usage)
 
 The template can either be installed via a NuGet package or by installing from the source code.
 Only one install method is needed.  See the [Install Via NuGet Package](#install-via-nuget-package) and [Install Via Source Code](#install-via-source-code) sections below.
