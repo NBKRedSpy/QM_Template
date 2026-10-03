@@ -11,11 +11,10 @@ Install the template via command prompt: `dotnet new install <nupkg file name>`
 Example: `dotnet new install .\NBK_RedSpy.QM_Template.Template.1.1.1.nupkg`  
 Create a new project via command prompt: `dotnet new QM_Template -o SomeAmazingMod --UserName YourModderName`  
 
-See the [Folder Structure](#folder-structure) section for more information on the directory contents and usage.
-
-The remainder of this document contains information on install options and template usage.
+See the [Template Usage](#template-usage) and [Creating a Mod](#creating-a-mod) sections for more information on the directory contents and usage.
 
 # Installation
+If the template has already been installed via the Quick Start section above, skip to the [Template Usage](#template-usage)
 
 The template can either be installed via a NuGet package or by installing from the source code.
 Only one install method is needed.  See the [Install Via NuGet Package](#install-via-nuget-package) and [Install Via Source Code](#install-via-source-code) sections below.
@@ -47,7 +46,7 @@ The template is now installed.
 # Template Usage
 
 After the template is installed (as per the [Installation](#installation) section), a new project can be created with Visual Studio or the `dotnet` CLI tool.
-The layout of the project is described in the [Folder Structure](#folder-structure) section.
+The layout of the project is described in the [Creating a Mod](#creating-a-mod) section.
 
 ## Visual Studio 
 Visual Studio is the easier of the two methods.
@@ -81,7 +80,9 @@ To uninstall the template package use:
 
 In the example above, type `dotnet new uninstall NBK_RedSpy.QM_Template.Template` and press enter.
 
-# Folder Structure
+# Creating a Mod
+
+The template will create the following files and folders:
 
 ```
 FooProject
@@ -108,7 +109,8 @@ FooProject
             AssemblyInfo.cs		-- Version Information
 ```
 
-To use the project:
+## Making the Mod
+
 * Make the changes to the files in the src folder.
 * Update the modmanifest.json in the root if necessary.
 * Add a thumbnail.png to the media folder.
@@ -132,6 +134,11 @@ Update the mod on Steam:
 * Open the game.
 * Use the console command `mod_updateworkshopitem <Steam Workshop ID> <Workshop Folder> true`, pointing to the mod's Steam Workshop folder.  Example: `mod_updateworkshopitem 1234567 "C:\Program Files\steamapps\workshop\content\2059170\12345678" true`
 * Change the Mod's Steam Workshop page to public.
+
+# Debugging Build Output
+To see the output of all of the build tasks instead of just the project build, run the following in a command prompt in the project's src folder:
+
+`dotnet build -v n -tl:off`
 
 # Change Log
 See the [Change Log](CHANGELOG.md) for details on changes to the template.
