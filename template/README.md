@@ -3,8 +3,9 @@
 ![thumbnail icon](media/thumbnail.png)
 
 # Configuration
+The mod's configuration can be changed on the Main Menu -> Mods -> QM_Template.
 
-The configuration file will be created on the first game run and can be found at `%AppData%\..\LocalLow\Magnum Scriptum Ltd\Quasimorph_ModConfigs\QM_Template\config.json`.
+If MCM is not installed, the configuration file can be directly edited at `%UserProfile%\AppData\LocalLow\Magnum Scriptum Ltd\Quasimorph_ModConfigs\QM_Template\config.json`, and will be created on the first game run.
 
 |Name|Default|Description|
 |--|--|--|
@@ -15,9 +16,12 @@ The list of valid keyboard keys can be found  at the bottom of https://docs.unit
 Beware that numbers 0-9 are Alpha0 - Alpha9.  Most of the other keys are as expected such as X for X.
 Use "None" to not bind the key.
 
-# Buy Me a Coffee
+# Enjoy the Mods?
 If you enjoy my mods and want to buy me a coffee, check out my [Ko-Fi](https://ko-fi.com/nbkredspy71915) page.
-Thanks!
+Thank you!
 
 # Source Code
-Source code is available on GitHub at https://github.com/$UserName$/QM_Template
+Source code is available on GitHub at https://github.com/NBKRedSpy/QM_Template
+
+# Change Log
+Source code is available on GitHub at https://github.com/NBKRedSpy/QM_Template/blob/main/CHANGELOG.md

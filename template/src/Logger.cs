@@ -15,7 +15,6 @@ namespace QM_Template
     /// </summary>
     public class Logger
     {
-
         /// <summary>
         /// The identifier to include at the start of every line.
         /// If not set, defaults to this assembly's name.
@@ -47,10 +46,17 @@ namespace QM_Template
             Debug.LogError($"[{LogPrefix}] {message}");
         }
 
-        public void LogException(Exception ex)
+        public void LogError(Exception ex)
         {
             Debug.LogError($"[{LogPrefix}] Exception Logged:");
             Debug.LogException(ex);
         }
+
+        public void LogError(Exception ex, string message)
+        {
+            Debug.LogError($"[{LogPrefix}] {message}:");
+            Debug.LogException(ex);
+        }
+
     }
 }

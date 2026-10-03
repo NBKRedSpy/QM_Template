@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("QM_Template")]
-[assembly: AssemblyCopyright("Copyright © 2025 $UserName$")]
+[assembly: AssemblyCopyright("Copyright © 2025 NBKRedSpy")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

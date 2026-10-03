@@ -44,48 +44,5 @@ namespace QM_Template
             ConfigFileName = configFileName;
 
         }
-
-        /// <summary>
-        /// Moves the config files from the legacy directory to the new directory.
-        /// </summary>
-        public void UpgradeModDirectory()
-        {
-            try
-            {
-                string oldDirectory = Path.Combine(Application.persistentDataPath,
-                    ModAssemblyName);
-
-                if (!Directory.Exists(oldDirectory)) return;
-
-                Plugin.Logger.LogWarning($"Moving config folder from '{oldDirectory}' to '{ModPersistenceFolder}");
-                Directory.Move(oldDirectory, ModPersistenceFolder);
-            }
-            catch (Exception ex)
-            {
-                Plugin.Logger.Log($"Unable to move the config files.  Exception: {ex.ToString()}");
-            }
-        }
-
-        /// <summary>
-        /// Moves a standalone file to a directory config path.
-        /// </summary>
-        /// <param name="configFileName"></param>
-        public void UpgradeFile(string configFileName = "config.json")
-        {
-            try
-            {
-                string oldConfigFile = Path.Combine(Application.persistentDataPath, configFileName);
-
-                if (!File.Exists(oldConfigFile)) return;
-
-                Plugin.Logger.LogWarning($"Moving config file from '{oldConfigFile}' to '{ModPersistenceFolder}");
-                Directory.CreateDirectory(ModPersistenceFolder);
-                File.Move(oldConfigFile, ConfigPath);
-            }
-            catch (Exception ex)
-            {
-                Plugin.Logger.Log($"Unable to move the config files.  Exception: {ex.ToString()}");
-            }
-        }
     }
 }

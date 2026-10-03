@@ -1,5 +1,5 @@
 {
-  "UniqueModName": "$UserName$_QM_Template",
+  "UniqueModName": "NBKRedSpy_QM_Template",
   "Assemblies": [
     "QM_Template.dll"
   ],

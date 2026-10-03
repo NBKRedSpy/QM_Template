@@ -9,6 +9,8 @@
 
 //namespace QM_Template
 //{
+//
+//    // This is an example of a Harmony patch
 //    [HarmonyPatch(typeof(MainMenuScreen), nameof(MainMenuScreen.Awake))]
 //    public static class ExamplePatch
 //    {
