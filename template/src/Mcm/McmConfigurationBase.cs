@@ -52,39 +52,6 @@ namespace QM_Template.Mcm
         /// </summary>
         private static int UniqueId = 0;
 
-        /// <summary>
-        /// Attempts to configure the MCM, but logs an error and continues if it fails.
-        /// </summary>
-        public bool TryConfigure()
-        {
-
-            const string missingMcmMessage = "MCM is not available.  MCM will not be used.";
-
-            try
-            {
-                bool mcmAvailable = AppDomain.CurrentDomain.GetAssemblies()
-                    .FirstOrDefault(a => a.GetName().Name == "ModConfigMenu") != null;
-
-                if (!mcmAvailable)
-                {
-                    Plugin.Logger.Log(missingMcmMessage);
-                    return false;
-                }
-
-                Configure();
-                return true;
-            }
-            catch (FileNotFoundException)
-            {
-                Plugin.Logger.Log(missingMcmMessage);
-            }
-            catch (Exception ex)
-            {
-                Plugin.Logger.LogError(ex, "An error occurred when configuring MCM");
-            }
-
-            return false;
-        }
 
 
         /// <summary>
@@ -92,6 +59,32 @@ namespace QM_Template.Mcm
         /// </summary>
         public abstract void Configure();
 
+        /// <summary>
+        /// Attempts to configure the MCM support if MCM is available.  Returns null if MCM is not available or if an error occurs.
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="config"></param>
+        /// <returns>Null if MCM is not available or if an error occurs.</returns>
+        public static McmConfiguration TryConfigure(State state, ModConfig config)
+        {
+            if (!state.Get<UserMods>().Values
+                .Any(x => x.UniqueModName == "Crynano_ModConfigMenu"))
+            {
+                return null;
+            }
+
+            try
+            {
+                McmConfiguration mcmConfig = new McmConfiguration(config);
+                mcmConfig.Configure();
+                return mcmConfig;
+            }
+            catch (Exception ex)
+            {
+                Plugin.Logger.LogError(ex, "An error occurred when configuring MCM");
+            }
+            return null;
+        }
 
         /// <summary>
         /// Creates a dropdown config for an enum type.
@@ -292,7 +285,6 @@ namespace QM_Template.Mcm
             }
             else
             {
-                //todo: I don't think this is required
                 ////Change type if needed
                 //object convertedValue = Convert.ChangeType(value, propertyType);
                 setMethod(value);

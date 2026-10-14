@@ -33,13 +33,24 @@ namespace QM_Template
 
             Config = new ModConfig(ConfigDirectories.ConfigPath).LoadConfig();
 
-            //Optionally support MCM if the user has MCM installed.  Otherwise the user must edit the config
-            //  file directly as needed.
-            McmConfiguration = new McmConfiguration(Config);
-            McmConfiguration.TryConfigure();
-
             new Harmony("nbk_RedSpy_" + ConfigDirectories.ModAssemblyName).PatchAll();
         }
 
+        /// <summary>
+        /// Configures MCM if it is available.
+        /// </summary>
+        /// <param name="modContext"></param>
+        [Hook(ModHookType.MainMenuStarted)]
+        public static void MainMenuStarted(ModContext modContext)
+        {
+            //Note - this is a workaround as the game does not support an "optional dependency"
+            //  and we cannot guarantee that MCM will be loaded before this mod.
+
+            //If MCM is not loaded, this will be run every time the main menu is started, but this is not 
+            //  an issue.
+            if (McmConfiguration != null) return;
+
+            McmConfiguration = McmConfiguration.TryConfigure(modContext.State, Config);
+
+        }
     }
-}
